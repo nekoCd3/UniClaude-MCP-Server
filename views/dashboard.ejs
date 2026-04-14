@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Nexus Dev</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="topbar">Nexus Dev Control Panel</div>
+  <div id="app-shell">
+    <%- include('partials/sidebar', { devices, page: 'dashboard' }) %>
+    <main id="main-content">
+      <section class="panel hero-panel">
+        <div>
+          <h1>Device Control Hub</h1>
+          <p>Multi-device ADB, fastboot, screen and camera management in one control center.</p>
+        </div>
+      </section>
+
+      <section class="panel grid-panel">
+        <h2>Live Device Wall</h2>
+        <div class="device-grid" id="overviewGrid"></div>
+      </section>
+
+      <section class="panel summary-row">
+        <div>
+          <h3>Connected devices</h3>
+          <div id="summaryCount"></div>
+        </div>
+        <div>
+          <h3>Overview</h3>
+          <p>Select one of the top tabs to access ADB, fastboot, screen, and camera workflows.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/dashboard.js"></script>
+</body>
+</html>

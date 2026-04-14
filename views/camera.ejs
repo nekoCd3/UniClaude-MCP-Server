@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera | Nexus Dev</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="topbar">Nexus Dev Control Panel</div>
+  <div id="app-shell">
+    <%- include('partials/sidebar', { devices, page: 'camera' }) %>
+    <main id="main-content">
+      <section class="panel">
+        <h2>Camera Grid</h2>
+        <div class="camera-grid" id="cameraGrid"></div>
+      </section>
+    </main>
+  </div>
+  <script src="/camera.js"></script>
+</body>
+</html>

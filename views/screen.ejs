@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen | Nexus Dev</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="topbar">Nexus Dev Control Panel</div>
+  <div id="app-shell">
+    <%- include('partials/sidebar', { devices, page: 'screen' }) %>
+    <main id="main-content">
+      <section class="panel">
+        <h2>Device screen preview</h2>
+        <div class="panel-row">
+          <label for="screenDeviceSelect">Select ADB display</label>
+          <select id="screenDeviceSelect"></select>
+          <button id="screenRefresh" class="secondary">Refresh</button>
+        </div>
+        <div class="screen-wrapper">
+          <canvas id="screenCanvas"></canvas>
+          <video id="screenSource" muted playsinline style="display:none"></video>
+        </div>
+        <div class="status-line" id="screenStatus">Connect to a device to begin screen streaming.</div>
+      </section>
+    </main>
+  </div>
+  <script src="/screen.js"></script>
+</body>
+</html>

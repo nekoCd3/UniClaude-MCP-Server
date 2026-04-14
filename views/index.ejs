@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nexus Dev</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+<div id="topbar">Nexus Dev Control Panel</div>
+
+<div id="layout">
+
+<div id="sidebar">
+<button onclick="setMode('adb')">ADB</button>
+<button onclick="setMode('fastboot')">Fastboot</button>
+<button onclick="setMode('screen')">Screen</button>
+<button onclick="setMode('camera')">Camera</button>
+</div>
+
+<div id="main">
+
+<div id="devices">
+<% devices.forEach(d => { %>
+<div class="device" data-type="<%= d.type %>">
+<%= d.name %>
+</div>
+<% }) %>
+</div>
+
+<div id="view">
+<canvas id="screen"></canvas>
+</div>
+
+</div>
+
+</div>
+
+<script>
+window.__DEVICES__ = <%- JSON.stringify(devices) %>;
+</script>
+
+<script src="/ws.js"></script>
+<script src="/app.js"></script>
+
+</body>
+</html>

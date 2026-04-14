@@ -1,0 +1,90 @@
+also tiddy up the files and stuff so it is easier to understand and add all of these or change and look at the existing files on how certain things work before making somethign 📱 DEVICE CONTROL / ANDROID FEATURES
+ADB (Android Debug Bridge)
+Real ADB command terminal (WebADB-style UI)
+Device list UI (multiple devices)
+Connect / pair Android devices in browser
+Send commands like adb <command>
+Device-aware command routing (only show compatible devices)
+Fastboot
+Fastboot terminal UI
+Real fastboot-style commands (fastboot <command>)
+Device filtering for fastboot-only devices
+Flashing UI system
+File-based flashing (images)
+scrcpy / Screen Mirroring
+scrcpy live screen streaming
+H.264 video stream handling
+Decode scrcpy to canvas (smooth FPS rendering)
+Low-latency screen view (WebCodecs/WebRTC style)
+Device-specific screen routing (different handling per device type)
+File System / APK
+File manager UI (tree-based)
+Drag & drop APK install
+Upload/install APK through ADB
+Visual file explorer like WebADB
+Device file browsing (ADB-based)
+📹 CAMERA / CCTV FEATURES
+Security Camera Integration
+RTSP security camera support
+Camera feed shown in browser
+FFmpeg → browser streaming pipeline
+CCTV-style camera viewer system
+Multi-camera support (camera grid concept)
+🌐 MULTI-DEVICE SYSTEM
+Multiple devices listed in UI
+Device filtering by mode (ADB / Fastboot / Screen / Camera)
+Device-specific UI rendering logic
+Device selection system
+Per-device screen handling logic
+Device-aware feature availability
+🧭 UI / UX SYSTEM
+Layout / Navigation
+Multi-page application structure (not single page)
+Tab-based navigation system
+Sidebar navigation (professional control panel style)
+Separate pages:
+Dashboard
+ADB
+Fastboot
+Screen
+Camera
+Login screen
+UI Style Requirements
+Minimal professional UI (no emojis)
+Black / gray theme only
+Gradient-based background (black/gray)
+Non-flat “depth” design (panels, borders, layering)
+Clean dev-tool style interface
+Modern “control center” aesthetic
+Advanced UI Interaction
+Drag & drop device panels
+CCTV-style grid layout (multi-device wall)
+Multi-tab system (like real dev tools)
+Device tiles that can be rearranged
+Separate panels per function
+🔐 AUTHENTICATION / SECURITY
+Authentication system per device
+Login screen for Nexus Dev
+Token-based device session system (conceptual)
+Device access control layer (planned architecture)
+🔌 SYSTEM / BACKEND FEATURES
+Backend (Node.js)
+Real backend server (Express)
+EJS templating engine instead of static HTML
+WebSocket communication layer
+Device manager system
+Stream routing system
+scrcpy Backend
+scrcpy process execution in backend
+H.264 stream forwarding to browser
+scrcpy-to-canvas pipeline support
+Camera Backend
+RTSP camera support
+FFmpeg-based streaming bridge
+Camera-to-browser video pipeline
+🧠 ADVANCED ARCHITECTURE REQUESTS
+“Real WebADB clone architecture (production level)”
+Full backend implementation (not frontend-only)
+Modular system structure
+Separation of frontend/backend responsibilities
+Real device control system (not fake UI) for fastboot use https://github.com/kdrag0n/fastboot.js/ and use cdn dont directly install it for webadb use https://github.com/yume-chan/ya-webadb for webadb protocal also use cdn just use cdn for all external bianries for wrtc use https://github.com/muaz-khan/rtcmulticonnection for scrapy use https://github.com/scrapy-plugins/scrapy-splash for connecting to the device i want it to use the chorme apis for bluetooth usb and a lot more and i dont watnt a login area
