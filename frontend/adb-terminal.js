@@ -33,40 +33,13 @@ class AdbTerminal {
 
   async connectWebUSB() {
     try {
-      if (!navigator.usb) {
-        throw new Error('WebUSB not supported');
-      }
-
-      const device = await navigator.usb.requestDevice({
-        filters: [{ classCode: 255, subclassCode: 66, protocolCode: 1 }]
-      });
-
-      await device.open();
-      await device.selectConfiguration(1);
-
-      const interface = device.configuration.interfaces.find(iface =>
-        iface.claimed === false && iface.alternates.some(alt =>
-          alt.interfaceClass === 255 && alt.interfaceSubclass === 66 && alt.interfaceProtocol === 1
-        )
-      );
-
-      if (!interface) {
-        throw new Error('No ADB interface found');
-      }
-
-      await device.claimInterface(interface.interfaceNumber);
-
-      const inEndpoint = interface.alternates[0].endpoints.find(ep => ep.direction === 'in');
-      const outEndpoint = interface.alternates[0].endpoints.find(ep => ep.direction === 'out');
-
-      this.device = device;
-      this.inEndpoint = inEndpoint;
-      this.outEndpoint = outEndpoint;
-
+      // Use WebUSBAdbTerminal for ADB connection
+      const adb = new WebUSBAdbTerminal();
+      await adb.connect();
+      this.device = adb;
       this.appendOutput('Connected to ADB device via WebUSB\n');
       this.connectButton.disabled = true;
       this.connectButton.textContent = 'Connected';
-
     } catch (error) {
       this.appendOutput(`Connection failed: ${error.message}\n`);
     }
@@ -85,9 +58,8 @@ class AdbTerminal {
     }
 
     try {
-      // Use ya-webadb for ADB protocol handling
-      const adb = new YaWebADB(this.device);
-      const output = await adb.shell(command);
+      // Use WebUSBAdbTerminal for ADB protocol handling
+      const output = await this.device.shell(command);
       this.appendOutput(`${output}\n`);
     } catch (error) {
       this.appendOutput(`Command failed: ${error.message}\n`);
