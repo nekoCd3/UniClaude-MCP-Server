@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ADB | Nexus Dev</title>
   <link rel="stylesheet" href="/styles.css">
+
+  <!-- CDN Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@yume-chan/ya-webadb@0.0.19/dist/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fastboot.js@1.0.0/dist/fastboot.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/rtcmulticonnection@3.7.1/dist/RTCMultiConnection.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/scrapy-splash@1.0.0/dist/scrapy-splash.min.js"></script>
 </head>
 <body>
   <div id="topbar">Nexus Dev Control Panel</div>
@@ -18,7 +24,11 @@
             <label for="adbDeviceSelect">Target device</label>
             <select id="adbDeviceSelect"></select>
           </div>
-          <button id="connectWebUsb">Connect via WebUSB</button>
+          <button id="connectWebUsb" style="background: #2a8dd7;">🔌 Connect via WebUSB</button>
+        </div>
+        <div style="margin-bottom: 12px; color: #94a7bc; font-size: 0.9rem;">
+          <strong>WebUSB Connection:</strong> Click "Connect via WebUSB" to connect Android devices directly through your browser.
+          Make sure your device is in USB debugging mode.
         </div>
         <div class="terminal-panel">
           <div id="adbOutput" class="terminal-output">Choose a device and send a command.</div>
@@ -46,7 +56,9 @@
       </section>
     </main>
   </div>
-  <script src="/webusb-adb.js"></script>
-  <script src="/adb.js"></script>
+  <script>window.__DEVICES__ = <%- JSON.stringify(devices) %>;</script>
+  <script src="/adb-terminal.js"></script>
+  <script src="/adb-files.js"></script>
+  <script src="/adb-install.js"></script>
 </body>
 </html>

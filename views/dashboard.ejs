@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard | Nexus Dev</title>
   <link rel="stylesheet" href="/styles.css">
+
+  <!-- CDN Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@yume-chan/ya-webadb@0.0.19/dist/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fastboot.js@1.0.0/dist/fastboot.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/rtcmulticonnection@3.7.1/dist/RTCMultiConnection.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/scrapy-splash@1.0.0/dist/scrapy-splash.min.js"></script>
 </head>
 <body>
   <div id="topbar">Nexus Dev Control Panel</div>
@@ -15,6 +21,15 @@
         <div>
           <h1>Device Control Hub</h1>
           <p>Multi-device ADB, fastboot, screen and camera management in one control center.</p>
+          <div style="margin-top: 16px; color: #94a7bc; font-size: 0.9rem;">
+            <p><strong>Navigation:</strong> Use the sidebar links to access different tools:</p>
+            <ul style="margin: 8px 0; padding-left: 20px;">
+              <li><strong>ADB</strong> - Android Debug Bridge terminal and file management</li>
+              <li><strong>Fastboot</strong> - Fastboot flashing and device commands</li>
+              <li><strong>Screen</strong> - Live screen mirroring</li>
+              <li><strong>Camera</strong> - RTSP camera feeds</li>
+            </ul>
+          </div>
         </div>
       </section>
 

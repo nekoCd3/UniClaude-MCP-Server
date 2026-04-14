@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Camera | Nexus Dev</title>
   <link rel="stylesheet" href="/styles.css">
+
+  <!-- CDN Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@yume-chan/ya-webadb@0.0.19/dist/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fastboot.js@1.0.0/dist/fastboot.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/rtcmulticonnection@3.7.1/dist/RTCMultiConnection.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/scrapy-splash@1.0.0/dist/scrapy-splash.min.js"></script>
 </head>
 <body>
   <div id="topbar">Nexus Dev Control Panel</div>
@@ -17,6 +23,7 @@
       </section>
     </main>
   </div>
-  <script src="/camera.js"></script>
+  <script>window.__DEVICES__ = <%- JSON.stringify(devices) %>;</script>
+  <script src="/camera-grid.js"></script>
 </body>
 </html>

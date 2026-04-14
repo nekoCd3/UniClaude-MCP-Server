@@ -61,10 +61,49 @@ async function getScreenSize(deviceId) {
   return { width: 720, height: 1280 };
 }
 
+async function handleWebSocket(deviceId, ws) {
+  const device = await db.getDevice(deviceId);
+  if (!device) {
+    ws.close(1008, "Device not found");
+    return;
+  }
+
+  try {
+    const serial = await resolveSerial(deviceId);
+    const adbStream = await client.shell(serial, "sh");
+
+    adbStream.on("data", (chunk) => {
+      if (ws.readyState === ws.OPEN) {
+        ws.send(chunk);
+      }
+    });
+
+    ws.on("message", (message) => {
+      adbStream.write(message);
+    });
+
+    ws.on("close", () => {
+      adbStream.end();
+    });
+
+    ws.on("error", () => {
+      adbStream.end();
+    });
+
+    adbStream.on("error", () => {
+      ws.close();
+    });
+
+  } catch (error) {
+    ws.close(1011, error.message);
+  }
+}
+
 module.exports = {
   resolveSerial,
   shell,
   installApk,
   listFiles,
-  getScreenSize
+  getScreenSize,
+  handleWebSocket
 };

@@ -4,6 +4,7 @@ const http = require("http");
 const express = require("express");
 const multer = require("multer");
 const WebSocket = require("ws");
+const { v4: uuidv4 } = require("uuid");
 
 const db = require("./db");
 const adb = require("./adb");
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, "../frontend")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Main routes
 app.get("/", async (req, res) => {
   const devices = await db.getDevices();
   return res.render("dashboard", { devices });
@@ -51,6 +53,7 @@ app.get("/camera", async (req, res) => {
   return res.render("camera", { devices });
 });
 
+// API routes
 app.get("/api/devices", async (req, res) => {
   const devices = await db.getDevices();
   return res.json(devices);
@@ -133,17 +136,28 @@ app.get("/api/camera/stream/:id", async (req, res) => {
   }
 });
 
+// WebSocket routes
 wss.on("connection", (ws, req) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
+
   if (url.pathname.startsWith("/ws/screen/")) {
     const deviceId = url.pathname.replace("/ws/screen/", "");
     scrcpy.streamToSocket(deviceId, ws);
     return;
   }
+
+  if (url.pathname.startsWith("/ws/adb/")) {
+    const deviceId = url.pathname.replace("/ws/adb/", "");
+    adb.handleWebSocket(deviceId, ws);
+    return;
+  }
+
   ws.close(1000, "Unknown socket route");
 });
 
+// Initialize and start server
 (async () => {
   await db.init();
   server.listen(PORT, () => console.log(`Nexus V4 running on http://localhost:${PORT}`));
 })();
+

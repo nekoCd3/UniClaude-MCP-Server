@@ -25,11 +25,102 @@ a {
   font-weight: 600;
 }
 
-#dashboard {
+#app-shell {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 18px;
   padding: 20px;
+}
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(10, 18, 30, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-brand {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-nav a {
+  padding: 12px 16px;
+  color: #d8e6f4;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.sidebar-nav a.active {
+  background: #1d5e9c;
+  color: #fff;
+}
+
+.sidebar-section h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  color: #e7eef7;
+}
+
+.device-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.device-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(13, 21, 34, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.device-chip.adb {
+  border-left: 3px solid #2a8dd7;
+}
+
+.device-chip.fastboot {
+  border-left: 3px solid #f19797;
+}
+
+.device-chip.camera {
+  border-left: 3px solid #9beac1;
+}
+
+.device-chip span {
+  color: #b2c1d6;
+}
+
+.device-chip small {
+  color: #7f97b3;
+  font-size: 0.85rem;
+}
+
+#main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .panel {
@@ -44,6 +135,24 @@ a {
   margin: 0 0 16px;
   font-size: 1.15rem;
   letter-spacing: 0.01em;
+}
+
+.panel-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.panel-row label {
+  font-size: 0.95rem;
+  color: #d7e1f0;
+  white-space: nowrap;
+}
+
+.panel-row input,
+.panel-row select {
+  flex: 1;
 }
 
 #deviceSidebar {
@@ -260,5 +369,213 @@ select {
 @media (max-width: 1080px) {
   #dashboard {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Device tiles */
+.device-tile {
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  background: rgba(13, 21, 34, 0.98);
+}
+
+.tile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.tile-badge {
+  font-size: 0.82rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(47, 205, 158, 0.12);
+  color: #9beac1;
+}
+
+.tile-body p {
+  margin: 4px 0;
+  color: #94a7bc;
+  font-size: 0.9rem;
+}
+
+/* Terminal styles */
+.terminal-panel {
+  margin-top: 16px;
+}
+
+.terminal-output {
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(1, 8, 18, 0.95);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #c7d4e5;
+  white-space: pre-wrap;
+}
+
+.terminal-input-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.terminal-input-row input {
+  flex: 1;
+}
+
+/* File explorer */
+.file-list {
+  margin-top: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.file-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(13, 21, 34, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.file-row:hover {
+  background: rgba(21, 33, 52, 0.98);
+}
+
+.file-row.directory {
+  border-left: 3px solid #4b7aac;
+}
+
+.file-row.file {
+  border-left: 3px solid #8aa8cc;
+}
+
+.file-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #b2c1d6;
+}
+
+.file-name::before {
+  content: "\25B6";
+  display: inline-block;
+  transform: rotate(90deg);
+  color: #4b7aac;
+}
+
+.file-row.file .file-name::before {
+  content: "\2022";
+  color: #8aa8cc;
+  transform: none;
+}
+
+/* APK drop zone */
+.file-drop-zone {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  color: #94a7bc;
+}
+
+.file-drop-zone:hover,
+.file-drop-zone.drag-over {
+  border-color: #2a8dd7;
+  background: rgba(42, 141, 215, 0.05);
+}
+
+/* Screen streaming */
+.screen-wrapper {
+  margin-top: 16px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  min-height: 400px;
+}
+
+#screenCanvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Camera grid */
+.camera-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.camera-tile {
+  padding: 0;
+}
+
+.camera-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(9, 14, 22, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.camera-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.status-indicator {
+  color: #f19797;
+}
+
+.camera-video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #000;
+}
+
+.camera-status {
+  padding: 8px 16px;
+  background: rgba(241, 151, 151, 0.1);
+  color: #f19797;
+  font-size: 0.9rem;
+}
+
+.camera-status.live {
+  background: rgba(47, 205, 158, 0.1);
+  color: #9beac1;
+}
+
+.camera-status.error {
+  background: rgba(241, 151, 151, 0.1);
+  color: #f19797;
+}
+
+@media (max-width: 1080px) {
+  #app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  #sidebar {
+    order: 2;
+  }
+
+  #main-content {
+    order: 1;
   }
 }
