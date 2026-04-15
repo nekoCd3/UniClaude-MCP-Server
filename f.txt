@@ -1,0 +1,3 @@
+echo 'export cfat_lw7I7qMGNQMDm4c9eMLQFcs8MF5g7wBs4UBOsemf7f5a6794' > ~/.secrets.env
+chmod 600 ~/.secrets.env
+echo 'source ~/.secrets.env' >> ~/.bashrc

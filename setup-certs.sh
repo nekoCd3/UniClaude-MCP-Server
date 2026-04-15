@@ -9,12 +9,14 @@
 #     Zone:DNS:Edit permission on the zttmail.us zone)
 #
 # Usage:
-#   export CF_API_TOKEN=your_token_here
-#   ./scripts/setup-certs.sh
+
 #
 # After success the cert lives at:
 #   /etc/letsencrypt/live/mcp.zttmail.us/fullchain.pem
 #   /etc/letsencrypt/live/mcp.zttmail.us/privkey.pem
+
+   export CF_API_TOKEN=cfk_aK5MMXV1G0whJ5jVXAgkl0hOneigB2pjCIwr4B5r28bd9d37
+
 
 set -euo pipefail
 
@@ -43,10 +45,10 @@ EOF
 chmod 600 "$CRED_FILE"
 
 echo ">> Requesting cert for ${DOMAIN} via DNS-01..."
-sudo certbot certonly \
+udo certbot certonly \
   --dns-cloudflare \
   --dns-cloudflare-credentials "$CRED_FILE" \
-  --dns-cloudflare-propagation-seconds 30 \
+  --dnss-cloudflare-propagation-seconds 30 \
   -d "$DOMAIN" \
   --non-interactive \
   --agree-tos \
