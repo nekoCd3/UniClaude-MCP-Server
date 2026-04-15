@@ -26,9 +26,9 @@ type JSONRPCRequest struct {
 }
 
 type JSONRPCResponse struct {
-	JSONRPC string      `json:"jsonrpc"`
-	ID      interface{}  `json:"id,omitempty"`
-	Result  interface{} `json:"result,omitempty"`
+	JSONRPC string        `json:"jsonrpc"`
+	ID      interface{}   `json:"id,omitempty"`
+	Result  interface{}   `json:"result,omitempty"`
 	Error   *JSONRPCError `json:"error,omitempty"`
 }
 
@@ -54,7 +54,7 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"command": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The shell command to execute",
 				},
 			},
@@ -68,7 +68,7 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"path": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The absolute path to the file",
 				},
 			},
@@ -82,11 +82,11 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"path": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The absolute path to the file",
 				},
 				"content": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The content to write to the file",
 				},
 			},
@@ -100,7 +100,7 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"path": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The absolute path to the directory",
 				},
 			},
@@ -114,7 +114,7 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"path": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The absolute path to delete",
 				},
 			},
@@ -128,7 +128,7 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"path": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The absolute path to the directory",
 				},
 			},
@@ -142,11 +142,11 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"src": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The absolute path to the source file",
 				},
 				"dst": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The absolute path to the destination file",
 				},
 			},
@@ -160,11 +160,11 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"src": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The absolute path to the source",
 				},
 				"dst": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The absolute path to the destination",
 				},
 			},
@@ -175,7 +175,7 @@ var tools = []Tool{
 		Name:        "cf_list_zones",
 		Description: "List all Cloudflare zones for the account",
 		InputSchema: map[string]interface{}{
-			"type": "object",
+			"type":       "object",
 			"properties": map[string]interface{}{},
 		},
 	},
@@ -186,7 +186,7 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"zone_id": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The Cloudflare zone ID",
 				},
 			},
@@ -200,27 +200,27 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"zone_id": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The Cloudflare zone ID",
 				},
 				"record_type": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "DNS record type (A, CNAME, etc.)",
 				},
 				"name": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "Record name",
 				},
 				"content": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "Record content",
 				},
 				"ttl": map[string]interface{}{
-					"type": "number",
+					"type":        "number",
 					"description": "TTL (optional)",
 				},
 				"proxied": map[string]interface{}{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "Whether to proxy through Cloudflare",
 				},
 			},
@@ -234,31 +234,31 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"zone_id": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The Cloudflare zone ID",
 				},
 				"record_id": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The DNS record ID",
 				},
 				"record_type": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "DNS record type",
 				},
 				"name": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "Record name",
 				},
 				"content": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "Record content",
 				},
 				"ttl": map[string]interface{}{
-					"type": "number",
+					"type":        "number",
 					"description": "TTL",
 				},
 				"proxied": map[string]interface{}{
-					"type": "boolean",
+					"type":        "boolean",
 					"description": "Whether to proxy",
 				},
 			},
@@ -272,11 +272,11 @@ var tools = []Tool{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"zone_id": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The Cloudflare zone ID",
 				},
 				"record_id": map[string]interface{}{
-					"type": "string",
+					"type":        "string",
 					"description": "The DNS record ID",
 				},
 			},
@@ -285,17 +285,44 @@ var tools = []Tool{
 	},
 }
 
+func envOrDefault(key, def string) string {
+	if v := os.Getenv(key); v != "" {
+		return v
+	}
+	return def
+}
+
 func main() {
 	http.HandleFunc("/", handleRequest)
 
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
+	// Cert paths — override via env. Defaults match certbot's standard layout
+	// when issued for mcp.zttmail.us.
+	certFile := envOrDefault("TLS_CERT_FILE", "/etc/letsencrypt/live/mcp.zttmail.us/fullchain.pem")
+	keyFile := envOrDefault("TLS_KEY_FILE", "/etc/letsencrypt/live/mcp.zttmail.us/privkey.pem")
+
+	httpsPort := envOrDefault("HTTPS_PORT", "443")
+
+	// Optional: also run an HTTP listener on :80 that redirects to HTTPS.
+	// Set ENABLE_HTTP_REDIRECT=1 to enable. Useful if you want `http://...`
+	// to bounce to `https://...`.
+	if os.Getenv("ENABLE_HTTP_REDIRECT") == "1" {
+		go func() {
+			redirect := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				target := "https://" + r.Host + r.URL.RequestURI()
+				http.Redirect(w, r, target, http.StatusMovedPermanently)
+			})
+			fmt.Println("Starting HTTP redirect listener on :80")
+			if err := http.ListenAndServe(":80", redirect); err != nil {
+				fmt.Printf("HTTP redirect listener error: %v\n", err)
+			}
+		}()
 	}
 
-	fmt.Printf("Starting HTTP server on :%s\n", port)
-	if err := http.ListenAndServe(":"+port, nil); err != nil {
-		fmt.Printf("HTTP server error: %v\n", err)
+	fmt.Printf("Starting HTTPS server on :%s\n", httpsPort)
+	fmt.Printf("  cert: %s\n", certFile)
+	fmt.Printf("  key:  %s\n", keyFile)
+	if err := http.ListenAndServeTLS(":"+httpsPort, certFile, keyFile, nil); err != nil {
+		fmt.Printf("HTTPS server error: %v\n", err)
 		os.Exit(1)
 	}
 }
